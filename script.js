@@ -1,17 +1,17 @@
-const getSecondLargestNumber = (arr = []) => {
+function secondHighest(arr) {
     if (arr.length < 2) return -Infinity;
 
-    let largestNumber = -Infinity;
-    let secondLargestNumber = -Infinity;
+    let first = -Infinity;
+    let second = -Infinity;
 
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > largestNumber) {
-            secondLargestNumber = largestNumber;
-            largestNumber = arr[i];
-        } else if (arr[i] > secondLargestNumber && arr[i] !== largestNumber) {
-            secondLargestNumber = arr[i];
+    for (let num of arr) {
+        if (num > first) {
+            second = first;
+            first = num;
+        } else if (num > second && num < first) {
+            second = num;
         }
     }
 
-    return secondLargestNumber === -Infinity ? -Infinity : secondLargestNumber;
+    return second === -Infinity ? -Infinity : second;
 }
